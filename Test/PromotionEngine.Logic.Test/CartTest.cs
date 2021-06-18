@@ -1,12 +1,12 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PromotionEngine.Login.Test
+namespace PromotionEngine.Logic.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class CartTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void GivenCartWhen()
         {
         }
     }
