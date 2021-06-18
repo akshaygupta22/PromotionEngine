@@ -5,7 +5,7 @@ namespace PromotionEngine.Logic
 {
     public class Cart : ICart
     {
-        public List<Product> Products { get; }
+        public Dictionary<Product, int> Products { get; }
         public float Total { get; private set; }
         public float TotalDiscount { get; private set; }
         public float DiscountedTotal { get; set; }
@@ -14,13 +14,13 @@ namespace PromotionEngine.Logic
 
         public Cart()
         {
-            Products = new List<Product>();
+            Products = new Dictionary<Product, int>();
         }
 
-        public void AddProduct(Product product)
+        public void AddProduct(Product product, int quantity)
         {
-            Products.Add(product);
-            Total += product.Price;
+            Products.Add(product, quantity);
+            Total += (product.Price * quantity);
         }
         
         public void ClearCart()
@@ -29,19 +29,23 @@ namespace PromotionEngine.Logic
             Total = 0;
             DiscountedTotal = 0;
             TotalDiscount = 0;
+            _isPromotionsApplied = false;
         }
 
         public void ClearPromotions()
         {
             if (_isPromotionsApplied)
             {
-                Products.ForEach(p => p.IsPromotionApplied = false);
+                foreach (var (product, _) in Products)
+                {
+                    product.IsPromotionApplied = false;
+                }
                 DiscountedTotal = 0;
                 TotalDiscount = 0;
             }
         }
 
-        public void ApplyPromotions(List<Promotion> promotions)
+        public void ApplyPromotions(List<IPromotion> promotions)
         {
             if (!_isPromotionsApplied)
             {
@@ -55,11 +59,13 @@ namespace PromotionEngine.Logic
 
         public void Checkout()
         {
-            foreach (var product in Products)
+            foreach (var (product, quantity) in Products)
             {
-                Console.WriteLine($"Product : {product.Name} Price : {product.Price}");
+                Console.WriteLine($"Product : {product.Name} Price : {product.Price} Quantity : {quantity}");
             }
             Console.WriteLine($"Total : {Total}");
+            Console.WriteLine($"Discount : {TotalDiscount}");
+            Console.WriteLine($"Discounted Total : {DiscountedTotal}");
         }
     }
 }

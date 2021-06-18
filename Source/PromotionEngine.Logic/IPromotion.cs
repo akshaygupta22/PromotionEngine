@@ -4,6 +4,6 @@ namespace PromotionEngine.Logic
 {
     public interface IPromotion
     {
-        float ApplyPromotion(List<Product> products);
+        float ApplyPromotion(Dictionary<Product, int> products);
     }
 }

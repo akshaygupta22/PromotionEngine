@@ -15,7 +15,7 @@ namespace PromotionEngine.Logic
             PromotionPrice = promotionPrice;
         }
 
-        public float ApplyPromotion(List<Product> products)
+        public float ApplyPromotion(Dictionary<Product, int> products)
         {
             throw new System.NotImplementedException();
         }

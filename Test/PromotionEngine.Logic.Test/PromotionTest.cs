@@ -16,13 +16,13 @@ namespace PromotionEngine.Logic.Test
             Assert.AreEqual(50, discountedPrice);
         }
 
-        private List<Product> GetProducts()
+        private Dictionary<Product, int> GetProducts()
         {
-            List<Product> products = new List<Product>
+            Dictionary<Product, int> products = new Dictionary<Product, int>()
             {
-                new() {Name = "A", Price = 20, IsPromotionApplied = false},
-                new() {Name = "A", Price = 20, IsPromotionApplied = false},
-                new() {Name = "A", Price = 20, IsPromotionApplied = false}
+                {new() {Name = "A", Price = 20, IsPromotionApplied = false}, 3},
+                {new() {Name = "B", Price = 10, IsPromotionApplied = false}, 1},
+                { new() {Name = "C", Price = 30, IsPromotionApplied = false}, 1}
             };
             return products;
         }
