@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace PromotionEngine.Logic.Test
@@ -7,13 +8,27 @@ namespace PromotionEngine.Logic.Test
     public class PromotionTest
     {
         [TestMethod]
-        public void GivenPromotionWhenAppliedThenReturnsDiscountedPrice()
+        public void GivenPromotion1WhenAppliedThenReturnsDiscountedPrice()
         {
-            Promotion promotion =
+            Promotion1 promotion =
                 new("A", 2, 30);
-            float discountedPrice = promotion.ApplyPromotion(GetProducts());
+            var products = GetProducts();
+            float discountedPrice = promotion.ApplyPromotion(products);
 
             Assert.AreEqual(50, discountedPrice);
+            Assert.IsTrue(products.FirstOrDefault(p=>p.Key.Name == "A").Key.IsPromotionApplied);
+        }
+
+        [TestMethod]
+        public void GivenPromotion2WhenAppliedThenReturnsDiscountedPrice()
+        {
+            Promotion2 promotion =
+                new("A", "B", 20);
+            var products = GetProducts();
+            float discountedPrice = promotion.ApplyPromotion(products);
+
+            Assert.AreEqual(60, discountedPrice);
+            Assert.IsTrue(products.FirstOrDefault(p=>p.Key.Name == "A" || p.Key.Name == "B").Key.IsPromotionApplied);
         }
 
         private Dictionary<Product, int> GetProducts()
