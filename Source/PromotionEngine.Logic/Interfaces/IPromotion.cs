@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PromotionEngine.Logic
+namespace PromotionEngine.Logic.Interfaces
 {
     public interface IPromotion
     {

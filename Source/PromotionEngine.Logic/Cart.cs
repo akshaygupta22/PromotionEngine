@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using PromotionEngine.Logic.Interfaces;
 
 namespace PromotionEngine.Logic
 {

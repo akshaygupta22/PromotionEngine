@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using PromotionEngine.Logic.Interfaces;
 
-namespace PromotionEngine.Logic
+namespace PromotionEngine.Logic.Promotions
 {
     public class Promotion1 : IPromotion
     {

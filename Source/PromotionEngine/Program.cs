@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using PromotionEngine.Logic;
+using PromotionEngine.Logic.Interfaces;
+using PromotionEngine.Logic.Promotions;
 
 namespace PromotionEngine
 {
