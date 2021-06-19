@@ -31,6 +31,18 @@ namespace PromotionEngine.Logic.Test
             Assert.IsTrue(products.FirstOrDefault(p=>p.Key.Name == "A" || p.Key.Name == "B").Key.IsPromotionApplied);
         }
 
+        [TestMethod]
+        public void GivenPromotion3WhenAppliedThenReturnsDiscountedPrice()
+        {
+            Promotion3 promotion =
+                new("A", 40);
+            var products = GetProducts();
+            float discountedPrice = promotion.ApplyPromotion(products);
+
+            Assert.AreEqual(36, discountedPrice);
+            Assert.IsTrue(products.FirstOrDefault(p => p.Key.Name == "A").Key.IsPromotionApplied);
+        }
+
         private Dictionary<Product, int> GetProducts()
         {
             Dictionary<Product, int> products = new Dictionary<Product, int>()

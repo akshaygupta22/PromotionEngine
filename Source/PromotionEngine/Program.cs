@@ -28,6 +28,12 @@ namespace PromotionEngine
             cart.ApplyPromotions(GetPromotions3());
             cart.Checkout();
 
+            Console.WriteLine("Scenario 4");
+            cart.ClearCart();
+            AddProductsToCart(cart, GetProducts4());
+            cart.ApplyPromotions(GetPromotions4());
+            cart.Checkout();
+
         }
 
         private static void AddProductsToCart(Cart cart, Dictionary<Product, int> products)
@@ -101,6 +107,32 @@ namespace PromotionEngine
         }
 
         private static Dictionary<Product, int> GetProducts3()
+        {
+            Dictionary<Product, int> products = new()
+            {
+                { new() { Name = "A", Price = 50 }, 3 },
+                { new() { Name = "B", Price = 30 }, 5 },
+                { new() { Name = "C", Price = 20 }, 1 },
+                { new() { Name = "D", Price = 15 }, 1 }
+            };
+            return products;
+        }
+
+        #endregion
+
+        #region scenario 3
+        
+        private static List<IPromotion> GetPromotions4()
+        {
+            return new()
+            {
+                new Promotion1("A", 3, 130),
+                new Promotion3("B", 50),
+                new Promotion2("C", "D", 30),
+            };
+        }
+
+        private static Dictionary<Product, int> GetProducts4()
         {
             Dictionary<Product, int> products = new()
             {

@@ -64,7 +64,7 @@ namespace PromotionEngine.Logic
                 Console.WriteLine($"Product : {product.Name} Price : {product.Price} Quantity : {quantity}");
             }
             Console.WriteLine($"Total : {Total}");
-            Console.WriteLine($"Discount : {TotalDiscount}");
+            Console.WriteLine($"Discount : {TotalDiscount = Total - DiscountedTotal}");
             Console.WriteLine($"Discounted Total : {DiscountedTotal}");
         }
     }
