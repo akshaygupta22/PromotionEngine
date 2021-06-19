@@ -19,6 +19,15 @@ namespace PromotionEngine.Logic.Test
         }
         
         [TestMethod]
+        public void GivenCartWhenAddZeroProductThenProductNotAdded()
+        {
+            Cart cart = new();
+            cart.AddProduct(new Product { Name = "A", Price = 20, IsPromotionApplied = false }, 0);
+
+            Assert.AreEqual(0, cart.Products.Count);
+        }
+        
+        [TestMethod]
         public void GivenCartWhenApplyPromotionThenDiscountedTotalUpdated()
         {
             Cart cart = new();

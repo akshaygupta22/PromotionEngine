@@ -19,6 +19,11 @@ namespace PromotionEngine.Logic
 
         public void AddProduct(Product product, int quantity)
         {
+            if(quantity <= 0)
+            {
+                Console.WriteLine("Cannot add 0 products.");
+                return;
+            }
             Products.Add(product, quantity);
             Total += (product.Price * quantity);
         }

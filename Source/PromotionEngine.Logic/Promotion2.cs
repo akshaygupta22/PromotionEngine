@@ -24,16 +24,9 @@ namespace PromotionEngine.Logic
             if (product1 != null && product2 != null)
             {
                 int promoCount = quantity1 > quantity2 ? quantity2 : quantity1;
-                if(promoCount >= 1)
-                {
-                    discountedPrice = (PromotionPrice * promoCount) + (quantity1 > quantity2
-                        ? (quantity1 - quantity2) * product1.Price
-                        : (quantity2 - quantity1) * product2.Price);
-                }
-                else
-                {
-                    discountedPrice = (product1.Price * quantity1) + (product2.Price * quantity2);
-                }
+                discountedPrice = (PromotionPrice * promoCount) + (quantity1 > quantity2
+                    ? (quantity1 - quantity2) * product1.Price
+                    : (quantity2 - quantity1) * product2.Price);
 
                 product1.IsPromotionApplied = true;
                 product2.IsPromotionApplied = true;

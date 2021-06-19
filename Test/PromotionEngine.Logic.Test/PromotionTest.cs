@@ -20,18 +20,6 @@ namespace PromotionEngine.Logic.Test
         }
 
         [TestMethod]
-        public void GivenPromotion2WhenAppliedThenReturnsDiscountedPrice()
-        {
-            Promotion2 promotion =
-                new("A", "B", 20);
-            var products = GetProducts();
-            float discountedPrice = promotion.ApplyPromotion(products);
-
-            Assert.AreEqual(60, discountedPrice);
-            Assert.IsTrue(products.FirstOrDefault(p=>p.Key.Name == "A" || p.Key.Name == "B").Key.IsPromotionApplied);
-        }
-
-        [TestMethod]
         public void GivenPromotion3WhenAppliedThenReturnsDiscountedPrice()
         {
             Promotion3 promotion =
